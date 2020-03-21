@@ -6,17 +6,6 @@
 * [Multiplayer Instructions](https://github.com/DarkPacks/SkyFactory-4/wiki/Multiplayer-Instructions)
 * [Minecraft Commands](https://minecraft.gamepedia.com/Commands)
 
-## Server Installation (manual)
-
-1. Downlod and unzip [Server Files](https://www.curseforge.com/minecraft/modpacks/skyfactory-4/files/2787018)
-2. Run `install.sh`
-3. *(Optional)* Update max memory usage in `settings.sh`
-4. Run `ServerStart.sh` to start the server (will initially fail)
-5. After intial server start failed, set `eula=true` in `eula.txt`
-6. Run `ServerStart.sh` again and wait until server startet
-7. In the interactive shell type `help` to get a list of available commands.
-8. Type `stop` to save data and stop server.
-
 ## Server Installation (docker)
 
 Initially run the following command to accept [EULA](https://account.mojang.com/documents/minecraft_eula) terms:
@@ -37,6 +26,17 @@ docker run -dit -v skyfactory4:/var/lib/skyfactory4 -p 25565:25565 --name skyfac
 Run `docker attach skyfactory4` in order to use interactive minecraft shell. Hit `CRTL+P+Q` to exit attached mode.
 
 Run `docker volume inspect skyfactory4` in order to get the volume path on the host system, where all the world data and so forth are stored.
+
+## Server Installation (manual)
+
+1. Downlod and unzip [Server Files](https://www.curseforge.com/minecraft/modpacks/skyfactory-4/files/2787018)
+2. Run `install.sh`
+3. *(Optional)* Update max memory usage in `settings.sh`
+4. Run `ServerStart.sh` to start the server (will initially fail)
+5. After intial server start failed, set `eula=true` in `eula.txt`
+6. Run `ServerStart.sh` again and wait until server startet
+7. In the interactive shell type `help` to get a list of available commands.
+8. Type `stop` to save data and stop server.
 
 ## Troubleshooting
 
