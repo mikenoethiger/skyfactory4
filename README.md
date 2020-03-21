@@ -1,9 +1,6 @@
 # Skyfactory 4
 
-* **Default Server Port:** 25565
-
-## Links
-
+* Default Minecraft Port: `25565`
 * [Curseforge Skyfactor 4](https://www.curseforge.com/minecraft/modpacks/skyfactory-4/files)
 * [GitHub Skyfactory 4](https://github.com/DarkPacks/SkyFactory-4)
 * [Multiplayer Instructions](https://github.com/DarkPacks/SkyFactory-4/wiki/Multiplayer-Instructions)
@@ -22,7 +19,7 @@
 
 ## Server Installation (docker)
 
-Initially run the following command to accept eula terms:
+Initially run the following command to accept [EULA](https://account.mojang.com/documents/minecraft_eula) terms:
 
 ```
 docker run --rm -v skyfactory4:/var/lib/skyfactory4 skyfactory4 bash -c 'echo "eula=true" > eula.txt'
