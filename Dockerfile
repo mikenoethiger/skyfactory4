@@ -10,7 +10,7 @@ RUN apk add curl && \
     mv SkyFactory_4_Server_4.1.0/* . && \
     rm SkyFactory_4_Server_4.1.0.zip && \
     ./Install.sh && \
-    echo 'export MAX_RAM="2048M"' >> settings.sh && \
+    echo '\nexport MAX_RAM="2048M"' >> settings.sh && \
     ./settings.sh
 
 CMD ["./ServerStart.sh"]

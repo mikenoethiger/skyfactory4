@@ -12,7 +12,7 @@
 Initially run the following command to accept [EULA](https://account.mojang.com/documents/minecraft_eula) terms:
 
 ```
-docker run --rm -v skyfactory4:/var/lib/skyfactory4 skyfactory4 bash -c 'echo "eula=true" > eula.txt'
+docker run --rm -v skyfactory4:/var/lib/skyfactory4 mikenoethiger/skyfactory4 ash -c 'echo "eula=true" > eula.txt'
 ```
 
 This will create the docker volume where all the skyfactory data will be persisted and then write `eula=true` to `eula.txt` which is the whole eula-terms-accepting magic.
@@ -21,10 +21,10 @@ The container is automatically removed after the command terminates (ensured by 
 Now run the server as a container:
 
 ```
-docker run -dit -v skyfactory4:/var/lib/skyfactory4 -p 25565:25565 --name skyfactory4 mikenothiger/skyfactory4
+docker run -dit -v skyfactory4:/var/lib/skyfactory4 -p 25565:25565 --name skyfactory4 mikenoethiger/skyfactory4
 ```
 
-Run `docker attach skyfactory4` in order to use interactive minecraft shell. Hit `CRTL+P+Q` to exit attached mode.
+Run `docker attach skyfactory4` in order to use the interactive minecraft shell. Hit `CRTL+P+Q` to exit attached mode.
 
 Run `docker volume inspect skyfactory4` in order to get the volume path on the host system, where all the world data and so forth are stored.
 
