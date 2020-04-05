@@ -21,7 +21,7 @@ The container is automatically removed after the command terminates (ensured by 
 Now run the server as a container:
 
 ```
-docker run -dit -v skyfactory4:/var/lib/skyfactory4 -p 25565:25565 --name skyfactory4 mikenoethiger/skyfactory4
+docker run -dit --restart always -v skyfactory4:/var/lib/skyfactory4 -p 25565:25565 --name skyfactory4 mikenoethiger/skyfactory4
 ```
 
 Run `docker attach skyfactory4` in order to use the interactive minecraft shell. Hit `CRTL+P+Q` to exit attached mode.
