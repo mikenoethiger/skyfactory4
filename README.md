@@ -12,7 +12,9 @@
 Initially run the following command to accept [EULA](https://account.mojang.com/documents/minecraft_eula) terms:
 
 ```
-docker run --rm -v skyfactory4:/var/lib/skyfactory4 mikenoethiger/skyfactory4 ash -c 'echo "eula=true" > eula.txt'
+docker run --rm \
+-v skyfactory4:/var/lib/skyfactory4 \
+mikenoethiger/skyfactory4 ash -c 'echo "eula=true" > eula.txt'
 ```
 
 This will create the docker volume where all the skyfactory data will be persisted and then write `eula=true` to `eula.txt` which is the whole eula-terms-accepting magic.
@@ -21,12 +23,17 @@ The container is automatically removed after the command terminates (ensured by 
 Now run the server as a container:
 
 ```
-docker run -dit --restart always -v skyfactory4:/var/lib/skyfactory4 -p 25565:25565 --name skyfactory4 mikenoethiger/skyfactory4
+docker run -dit \
+-p 25565:25565 \
+-v skyfactory4:/var/lib/skyfactory4 \
+--restart always \
+--name skyfactory4 \
+mikenoethiger/skyfactory4
 ```
 
 Run `docker attach skyfactory4` in order to use the interactive minecraft shell. Hit `CRTL+P+Q` to exit attached mode.
 
-Run `docker volume inspect skyfactory4` in order to get the volume path on the host system, where all the world data and so forth are stored.
+Run `docker volume inspect skyfactory4` in order to get the volume path on the host system, where all the world data and so forth is stored.
 
 ## Server Installation (manual)
 
@@ -38,6 +45,26 @@ Run `docker volume inspect skyfactory4` in order to get the volume path on the h
 6. Run `ServerStart.sh` again and wait until server startet
 7. In the interactive shell type `help` to get a list of available commands.
 8. Type `stop` to save data and stop server.
+
+## Load Backups
+
+Skyfactory automatically creates backups and stores them in the `backups` folder. My common routine to load a backup is as follows (make sure to `cd` to the `skyfactory4` volume beforehand):
+
+```bash
+mkdir archive
+mv world archive
+mkdir world
+cp backups/world/Backup--world--2020-04-11--22-18.zip world
+cd world
+unzip Backup--world--2020-04-11--22-18.zip
+rm Backup--world--2020-04-11--22-18.zip
+```
+
+This routine is summarized in the `loadbackup.sh` script provided in this repository. Usage example:
+
+```bash
+./loadbackup.sh Backup--world--2020-04-11--22-18.zip
+```
 
 ## Troubleshooting
 
